@@ -1,0 +1,330 @@
+<!DOCTYPE html> 
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Эксперименты ZoneAlarm Free Firewall</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(to bottom, #e6f4ff, #ffffff);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .top-nav {
+            background-color: #0077b6;
+            padding: 20px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-link:hover {
+            background-color: #48cae4;
+            transform: translateY(-2px);
+        }
+
+        .content {
+            flex: 1;
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .experiment {
+            background: white;
+            padding: 30px;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .carousel {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin: 20px auto;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        .carousel img {
+            width: 100%;
+            display: none;
+        }
+
+        .carousel img.active {
+            display: block;
+        }
+
+        .carousel-controls {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 10px;
+        }
+
+        .carousel-controls button {
+            padding: 10px 20px;
+            background-color: #0077b6;
+            border: none;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        /* Новый стиль для надписи под каруселью */
+        .photo-label {
+            text-align: center;
+            margin-top: 8px;
+            font-weight: 600;
+            color: #0077b6;
+            font-size: 16px;
+            user-select: none;
+        }
+
+        footer {
+            background-color: #f0f0f0;
+            padding: 25px;
+            text-align: center;
+            border-top: 2px solid #0077b6;
+            color: #555;
+            margin-top: auto;
+        }
+    </style>
+</head>
+<body>
+    <nav class="top-nav">
+        <div class="nav-links">
+            <a href="index.html" class="nav-link">Главная</a>
+            <a href="page5.html" class="nav-link">ОС</a>
+            <a href="page2.html" class="nav-link">Раздел 2</a>
+            <a href="page3.html" class="nav-link">Раздел 3</a>
+            <a href="page4.html" class="nav-link">Обо мне</a>
+        </div>
+    </nav>
+
+    <main class="content">
+        <h1 style="color: #0077b6; margin-bottom: 30px;">🧪 Эксперименты с ZoneAlarm</h1>
+
+        <!-- Эксперимент 1 -->
+        <div class="experiment">
+            <h2>Эксперимент 1. Блокировка входящего подключения от определённой программы</h2>
+            <p> 
+Цель: Проверить, как ZoneAlarm блокирует входящее подключение от конкретного приложения.
+
+Инструкция:
+
+Установите ZoneAlarm и запустите его.
+
+Запустите любое приложение, которое использует интернет (например, TeamViewer или сервер FileZilla).
+
+Перейдите в ZoneAlarm → «Application Control» (Контроль приложений).
+
+Найдите запущенное приложение в списке и установите для него запрет входящего трафика (Inbound = Block).
+
+С другого устройства попытайтесь подключиться к вашему приложению (например, TeamViewer или FTP).
+
+Убедитесь, что подключение блокируется.
+
+Посмотрите лог ZoneAlarm: должен быть зафиксирован входящий блок.
+
+</p>
+           
+            <div class="carousel" id="carousel1">
+                <img src="ex1zone1.png" class="active">
+                <img src="ex1zone2.png">
+                <img src="ex1zone3.png">
+                <img src="ex1zone4.png">
+              
+            </div>
+            <div class="photo-label" id="photoLabel1">Фото 1</div>
+            <div class="carousel-controls">
+                <button onclick="prev(1)">Назад</button>
+                <button onclick="next(1)">Вперёд</button>
+            </div>
+        </div>
+
+        <!-- Эксперимент 2 -->
+ <!-- Эксперимент 2 -->
+<div class="experiment">
+    <h2>Эксперимент 2. Приостановление работы приложения</h2>
+    <p> хз пока</p>
+   
+
+    <div class="carousel" id="carousel2">
+        <img src="ex1zone1.png" class="active">
+        <img src="ex1zone2.png">
+        <img src="ex2zone3.png">
+     
+    </div>
+    <div class="photo-label" id="photoLabel2">Фото 1</div>
+    <div class="carousel-controls">
+        <button onclick="prev(2)">Назад</button>
+        <button onclick="next(2)">Вперёд</button>
+    </div>
+</div>
+
+        <!-- Эксперимент 3 -->
+<!-- Эксперимент 3 -->
+<div class="experiment">
+    <h2>Эксперимент 3: Блокировка доступа для вредоносных URL </h2>
+    <p>📌Тест реакции на фиктивный вредоносный URL (Проверка базовой веб-защиты)
+Суть: Использовать тестовую ссылку, имитирующую угрозу.
+
+Действия:
+
+Откройте браузер и перейдите по адресу: http://malware.testing.google.test/testing/malware/ (безопасный тестовый URL, признанный ESET).
+
+Инициируйте загрузку любого "файла" на странице.
+
+Наблюдайте: Блокирует ли ZoneAlarm доступ к странице/загрузке? Появится ли предупреждение в логах ("Log Viewer" → "Program")?</p>
+   
+    <div class="carousel" id="carousel3">
+        <img src="ex1zone1.png" class="active">
+        <img src="ex3zone2.png">
+      
+    </div>
+    <div class="photo-label" id="photoLabel3">Фото 1</div>
+    <div class="carousel-controls">
+        <button onclick="prev(3)">Назад</button>
+        <button onclick="next(3)">Вперёд</button>
+    </div>
+</div>
+
+
+ <!-- Эксперимент 4 -->
+<div class="experiment">
+    <h2>Эксперимент 4: Firewall events</h2>
+    <p>Firewall Events в программе Zone Alarm — это события, которые фиксируются файрволом при контроле сетевой активности приложений. Программа записывает в лог все попытки подключений, нарушения правил и изменения в конфигурации файрвола. 
+support.zonealarm.com
+bellmts.ca
+help.comodo.com
+
+Структура лога
+Лог Firewall Events в Zone Alarm включает следующие данные:
+
+Дата и время попытки подключения.
+Приложение или процесс, вызвавший событие.
+Действие файрвола (разрешено или заблокировано подключение).
+Направление подключения (входящий или исходящий).
+Протокол подключения (обычно TCP/IP или UDP).
+Исходный IP и исходный порт компьютера, сделавшего попытку подключения.
+Исходный IP и исходный порт компьютера, к которому было направлено подключение.
+Исходящий IP и исходящий порт компьютера, к которому была направлена попытка подключения.
+ 
+help.comodo.com
+
+Настройка параметров
+В настройках Zone Alarm можно контролировать ведение лога Firewall Events:
+
+Включить или отключить запись событий.
+Настроить уровень детализации информации в логе.
+Установить частоту архивирования файла лога (по умолчанию — каждые 7 дней).
+ 
+ixbt.com
+support.zonealarm.com
+
+События, зафиксированные в логе, можно просмотреть на вкладке Log Viewer в интерфейсе программы. 
+support.zoneal</p>
+
+
+    <div class="carousel" id="carousel4">
+        <img src="ex4zone1.png" class="active">
+        <img src="ex1zone1.png">
+        <img src="ex4zone2.png">
+      
+    </div>
+    <div class="photo-label" id="photoLabel4">Фото 1</div>
+    <div class="carousel-controls">
+        <button onclick="prev(4)">Назад</button>
+        <button onclick="next(4)">Вперёд</button>
+    </div>
+</div>
+
+        <!-- Эксперимент 5 -->
+<!-- Эксперимент 5 -->
+<div class="experiment">
+    <h2>Эксперимент 5: Anti Bot </h2>
+    <p>Возможно, имелась в виду функция ZoneAlarm Anti-Ransomware, которая защищает систему от программ-вымогателей. 
+Программа анализирует все подозрительные действия на компьютере. Она обнаруживает атаки программ-вымогателей, блокирует их и немедленно восстанавливает любые зашифрованные файлы. 
+zonealarm.com</p>
+  
+
+    <div class="carousel" id="carousel5">
+        <img src="ex4zone1.png" class="active">
+        <img src="ex1zone1.png">
+        <img src="ex5zone1.png">
+    
+    </div>
+    <div class="photo-label" id="photoLabel5">Фото 1</div>
+    <div class="carousel-controls">
+        <button onclick="prev(5)">Назад</button>
+        <button onclick="next(5)">Вперёд</button>
+    </div>
+</div>
+
+    </main>
+
+    <footer>
+        © 2025 Галиуллина Элина ИЦТМС 3-1
+    </footer>
+
+    <script>
+        const carousels = [1, 2, 3, 4, 5].reduce((acc, i) => {
+            acc[i] = document.querySelectorAll(`#carousel${i} img`);
+            return acc;
+        }, {});
+
+        const currentIndex = {1: 0, 2: 0, 3: 0, 4: 0, 5: 0};
+
+        function updatePhotoLabel(num) {
+            const label = document.getElementById(`photoLabel${num}`);
+            if (!label) return;
+            label.textContent = `Фото ${currentIndex[num] + 1}`;
+        }
+
+        function showSlide(num, index) {
+            carousels[num].forEach((img, i) => {
+                img.classList.toggle('active', i === index);
+            });
+            updatePhotoLabel(num);
+        }
+
+        function next(num) {
+            currentIndex[num] = (currentIndex[num] + 1) % carousels[num].length;
+            showSlide(num, currentIndex[num]);
+        }
+
+        function prev(num) {
+            currentIndex[num] = (currentIndex[num] - 1 + carousels[num].length) % carousels[num].length;
+            showSlide(num, currentIndex[num]);
+        }
+
+        // Инициализация надписей при загрузке страницы
+        [1, 2, 3, 4, 5].forEach(num => updatePhotoLabel(num));
+    </script>
+</body>
+</html>

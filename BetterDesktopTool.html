@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BetterDesktopTool - Защита данных</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(to bottom, #e6f4ff, #ffffff);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .top-nav {
+            background-color: #0077b6;
+            padding: 20px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-link:hover {
+            background-color: #48cae4;
+            transform: translateY(-2px);
+        }
+		 footer {
+					background-color: #f0f0f0;
+					padding: 25px;
+					text-align: center;
+					border-top: 2px solid #0077b6;
+					color: #555;
+					margin-top: auto;
+				}
+
+        .content {
+            flex: 1;
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .welcome-text {
+            text-align: center;
+            font-size: 2.5em;
+            color: #0077b6;
+            margin: 50px 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Навигационная панель -->
+    <nav class="top-nav">
+        <div class="nav-links">
+            <a href="index.html" class="nav-link">Главная</a>
+            <a href="page5.html" class="nav-link">ОС</a>
+            <a href="page1.html" class="nav-link">Раздел 1</a>
+            <a href="page2.html" class="nav-link">Раздел 2</a>
+            <a href="page3.html" class="nav-link">Раздел 3</a>
+            <a href="page4.html" class="nav-link">Обо мне</a>
+        </div>
+    </nav>
+
+    <!-- Основной контент -->
+    <main class="content">
+        <h1 class="welcome-text">Добро пожаловать в раздел BetterDesktopTool!</h1>
+        <!-- Добавьте здесь дополнительный контент -->
+    </main>
+ <!-- Футер -->
+    <footer>
+        © 2025 Галиуллина Элина ИЦТМС 3-1
+    </footer>
+</body>
+</html>

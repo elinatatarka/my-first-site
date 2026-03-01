@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Обо мне</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(to bottom, #e6f4ff, #ffffff);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Единая навигация как на всех страницах */
+        .top-nav {
+            background-color: #0077b6;
+            padding: 20px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-link:hover {
+            background-color: #48cae4;
+            transform: translateY(-2px);
+        }
+
+        /* Контент страницы */
+        .profile-container {
+            flex: 1;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 0 20px;
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .profile-photo {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 8px 25px rgba(0,119,182,0.2);
+            border: 4px solid #0077b6;
+            transition: transform 0.3s;
+        }
+
+        .profile-photo:hover {
+            transform: rotate(5deg) scale(1.05);
+        }
+
+        .profile-info {
+            flex: 1;
+        }
+
+        h1 {
+            color: #023e8a;
+            margin-bottom: 20px;
+            font-size: 2.5em;
+        }
+
+        .about-text {
+            line-height: 1.8;
+            color: #555;
+            font-size: 1.1em;
+            background: rgba(255,255,255,0.9);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        footer {
+            background-color: #f0f0f0;
+            padding: 25px;
+            text-align: center;
+            border-top: 2px solid #0077b6;
+            color: #555;
+            margin-top: auto;
+        }
+
+        @media (max-width: 768px) {
+            .profile-container {
+                flex-direction: column;
+                text-align: center;
+                margin: 30px auto;
+            }
+            
+            .profile-photo {
+                width: 200px;
+                height: 200px;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+            
+            .nav-links {
+                gap: 15px;
+            }
+            
+            .nav-link {
+                padding: 10px 20px;
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Полноценная навигация -->
+    <nav class="top-nav">
+        <div class="nav-links">
+            <a href="index.html" class="nav-link">Главная</a>
+            <a href="page5.html" class="nav-link">ОС</a>
+         
+            <a href="page2.html" class="nav-link">Раздел 2</a>
+            <a href="page3.html" class="nav-link">Раздел 3</a>
+            <a href="page4.html" class="nav-link">Обо мне</a>
+
+
+        </div>
+    </nav>
+
+    <div class="profile-container">
+        <img src="my-photo.jpg" alt="Мое фото" class="profile-photo">
+        <div class="profile-info">
+            <h1>Галиуллина Элина</h1>
+            <div class="about-text">
+                <p>Студентка ИЦТМС 3-1, специализация - информационные технологии. на этом  пока что всё.</p>
+                
+                <p>🔹 добрый человек<br>
+                🔹 не победитель дсн 2025<br>
+                🔹 татастан алга</p>
+                
+                <p>В свободное время занимаюсь фотографией и изучаю нейронные сети. Верю, что технологии должны делать мир лучше!</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        © 2025 Галиуллина Элина ИЦТМС 3-1
+        
+    </footer>
+</body>
+</html>

@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Средства создания, редактирования и обслуживания виртуальных носителей.</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(to bottom, #e6f4ff, #ffffff);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .top-nav {
+            background-color: #0077b6;
+            padding: 20px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-link:hover {
+            background-color: #48cae4;
+            transform: translateY(-2px);
+        }
+
+        .content {
+            flex: 1;
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+            width: 100%;
+        }
+
+        .text-block {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin: 30px 0;
+            line-height: 1.6;
+        }
+        
+        .text-block p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .gallery-container {
+            display: flex;
+            justify-content: center;
+            margin: 40px 0;
+            width: 100%;
+        }
+
+        .image-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            max-width: 400px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .image-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .image-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .image-caption {
+            padding: 15px;
+            text-align: center;
+            color: #555;
+        }
+
+        /* Стили для карусели без JavaScript */
+        .carousel-container {
+            position: relative;
+            max-width: 900px;
+            margin: 40px auto;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            height: 500px;
+        }
+
+        .carousel {
+            display: flex;
+            width: 2200%; /* 22 слайда * 100% */
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-slide {
+            width: 4.54545%; /* 100% / 22 */
+            position: relative;
+        }
+
+        .carousel-img {
+            width: 100%;
+            height: 450px;
+            object-fit: contain;
+            display: block;
+            background: #f5f5f5;
+        }
+
+        .carousel-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 16px;
+        }
+
+        .carousel-controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .carousel-btn {
+            padding: 10px 20px;
+            background: #0077b6;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+
+        .carousel-btn:hover {
+            background: #48cae4;
+        }
+
+        .slide-counter {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #0077b6;
+        }
+
+        .carousel-nav {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .nav-dot {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: #ccc;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .nav-dot.active {
+            background: #0077b6;
+        }
+
+        footer {
+            background-color: #f0f0f0;
+            padding: 25px;
+            text-align: center;
+            border-top: 2px solid #0077b6;
+            color: #555;
+            margin-top: auto;
+        }
+
+        @media (max-width: 900px) {
+            .carousel-img {
+                height: 350px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 15px;
+            }
+            
+            .nav-link {
+                padding: 10px 20px;
+                font-size: 0.9em;
+            }
+            
+            .carousel-img {
+                height: 300px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .carousel-img {
+                height: 250px;
+            }
+            
+            .carousel-controls {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="top-nav">
+        <div class="nav-links">
+            <a href="index.html" class="nav-link">Главная</a>
+            <a href="page5.html" class="nav-link">ОС</a>
+            <a href="page2.html" class="nav-link">Раздел 2</a>
+            <a href="page3.html" class="nav-link">Раздел 3</a>
+            <a href="page4.html" class="nav-link">Обо мне</a>
+        </div>
+    </nav>
+
+    <main class="content">
+        <!-- Сохраняем существующий блок -->
+        <div class="text-block">
+            <h2>Средства управления рабочим столом и создания дополнительных рабочих столов.</h2>
+            <p>Нажмите на фото, чтобы скачать.</p>
+        </div>
+
+        <div class="gallery-container">
+            <div class="image-card">
+                <a href="https://drive.google.com/file/d/1HJDSRvHniiNLOBxMyWY2CTwi8ZK9uwVp/view?usp=sharing" target="_blank">
+                    <img src="image2.jpg" alt="Презентация">
+                    <div class="image-caption">(нажмите для скачивания)</div>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Добавляем новый блок с презентацией -->
+        <div class="text-block">
+            <h2>Презентация в слайдах</h2>
+            <p>Ниже представлена полная презентация по средствам создания и обслуживания виртуальных носителей. Презентация состоит из 22 слайдов, каждый из которых содержит важную информацию по данной теме.</p>
+            <p>Вы можете переключаться между слайдами с помощью кнопок навигации или выбирать конкретный слайд через точки под каруселью. Текущий номер слайда отображается над каруселью.</p>
+        </div>
+        
+        <!-- Карусель для 22 фото -->
+   
+        <div class="carousel-container">
+            <div class="carousel">
+                <!-- Слайды 1-22 -->
+                <div class="carousel-slide">
+                    <a href="p1.jpg" download="slide_1.jpg">
+                        <img src="p1.jpg" alt="Слайд 1" class="carousel-img">
+                        <div class="carousel-caption">Слайд 1 из 22 (нажмите для скачивания)</div>
+                    </a>
+                </div>
+                <div class="carousel-slide">
+                    <a href="p2.jpg" download="slide_2.jpg">
+                        <img src="p2.jpg" alt="Слайд 2" class="carousel-img">
+                        <div class="carousel-caption">Слайд 2 из 22 (нажмите для скачивания)</div>
+                    </a>
+                </div>
+                <div class="carousel-slide">
+                    <a href="p3.jpg" download="slide_3.jpg">
+                        <img src="p3.jpg" alt="Слайд 3" class="carousel-img">
+                        <div class="carousel-caption">Слайд 3 из 22 (нажмите для скачивания)</div>
+                    </a>
+                </div>
+                <div class="carousel-slide">
+                    <a href="p4.jpg" download="slide_4.jpg">
+                        <img src="p4.jpg" alt="Слайд 4" class="carousel-img">
+                        <div class="carousel-caption">Слайд 4 из 22 (нажмите для скачивания)</div>
+                    </a>
+                </div>
+                <div class="carousel-slide">
+                    <a href="p5.jpg" download="slide_5.jpg">
+                        <img src="p5.jpg" alt="Слайд 5" class="carousel-img">
+                        <div class="carousel-caption">Слайд 5 из 22 (нажмите для скачивания)</div>
+                    </a>
+                </div>
+                <div class="carousel-slide">
+                    <a href="p6.jpg" download="slide_6.jpg">
+                        <img src="p6.jpg" alt="Слайд 6" class="carousel-img">
+                        <div class="carousel-caption">Слайд 6 из 22 (нажмите для скачивания)</div>
+                    </a>
+                </div>
+                <div class="carousel-slide">
+                    <a href="p7.jpg" download="slide_7.jpg">
+                        <img src="p7.jpg" alt="Слайд 7" class="carousel-img">
+                        <div class="carousel-caption">Слайд 7 из 22 (нажмите для скачивания)</div>
+                    </a>
+                </div>
+                <div class="carousel-slide">
+                    <a href="p8.jpg" download="slide_8.jpg">
+                        <img src="p8.jpg" alt="Слайд 8" class="carousel-img">
+                        <div class="carousel-caption">Слайд 8 из 22 (нажмите для скачивания)</div>
+                    </a>
+                </div>
+                <div class="carousel-slide">
+                    <a href="p9.jpg" download="slide_9.jpg">
+                        <img src="p9.jpg" alt="Слайд 9" class="carousel-img">
+                        <div class="carousel-caption">Слайд 9 из 22 (нажмите для скачивания)</div>
+                    </a>
+                </div>
+                <div class="carousel-slide">
+                    <a href="p10.jpg" download="slide_10.jpg">
+                        <img src="p10.jpg" alt="Слайд 10" class="carousel-img">
+                        <div class="carousel-caption">Слайд 10 из 22 (нажмите для скачивания)</div>
+                    </a>
+                </div>
+                <div class="carousel-slide">
+                    <a href="p11.jpg" download="slide_11.jpg">
+                        <img src="p11.jpg" alt="Слайд 11" class="carousel-img">
+                        <div class="carousel-caption">Слайд 11 из 22 (нажмите для скачивания)</div>
+                    </a>
+                </div>
+                <div class="carousel-slide">
+                    <a href="p12.jpg" download="slide_12.jpg">
+                        <img src="p12.jpg" alt="Слайд 12" class="carousel-img">
+                        <div class="carousel-caption">Слайд 12 из 22 (нажмите для скачивания)</div>
+                    </a>
+                </div>
+                <div class="carousel-slide">
+                    <a href="p13.jpg" download="slide_13.jpg">
+                        <img src="p13.jpg" alt="Слайд 13" class="carousel-img">
+                        <div class="carousel-caption">Слайд 13 из 22 (нажмите для скачивания)</div>
+                    </a>
+                </div>
+                <div class="carousel-slide">
+                    <a href="p14.jpg" download="slide_14.jpg">
+                        <img src="p14.jpg" alt="Слайд 14" class="carousel-img">
+                        <div class="carousel-caption">Слайд 14 из 22 (нажмите для скачивания)</div>
+                    </a>
+                </div>
+                <div class="carousel-slide">
+                    <a href="p15.jpg" download="slide_15.jpg">
+                        <img src="p15.jpg" alt="Слайд 15" class="carousel-img">
+                        <div class="carousel-caption">Слайд 15 из 22 (нажмите для скачивания)</div>
+                    </a>
+                </div>
+                <div class="carousel-slide">
+                    <a href="p16.jpg" download="slide_16.jpg">
+                        <img src="p16.jpg" alt="Слайд 16" class="carousel-img">
+                        <div class="carousel-caption">Слайд 16 из 22 (нажмите для скачивания)</div>
+                    </a>
+                </div>
+                <div class="carousel-slide">
+                    <a href="p17.jpg" download="slide_17.jpg">
+                        <img src="p17.jpg" alt="Слайд 17" class="carousel-img">
+                        <div class="carousel-caption">Слайд 17 из 22 (нажмите для скачивания)</div>
+                    </a>
+                </div>
+                <div class="carousel-slide">
+                    <a href="p18.jpg" download="slide_18.jpg">
+                        <img src="p18.jpg" alt="Слайд 18" class="carousel-img">
+                        <div class="carousel-caption">Слайд 18 из 22 (нажмите для скачивания)</div>
+                    </a>
+                </div>
+                <div class="carousel-slide">
+                    <a href="p19.jpg" download="slide_19.jpg">
+                        <img src="p19.jpg" alt="Слайд 19" class="carousel-img">
+                        <div class="carousel-caption">Слайд 19 из 22 (нажмите для скачивания)</div>
+                    </a>
+                </div>
+                <div class="carousel-slide">
+                    <a href="p20.jpg" download="slide_20.jpg">
+                        <img src="p20.jpg" alt="Слайд 20" class="carousel-img">
+                        <div class="carousel-caption">Слайд 20 из 22 (нажмите для скачивания)</div>
+                    </a>
+                </div>
+                <div class="carousel-slide">
+                    <a href="p21.jpg" download="slide_21.jpg">
+                        <img src="p21.jpg" alt="Слайд 21" class="carousel-img">
+                        <div class="carousel-caption">Слайд 21 из 22 (нажмите для скачивания)</div>
+                    </a>
+                </div>
+                <div class="carousel-slide">
+                    <a href="p22.jpg" download="slide_22.jpg">
+                        <img src="p22.jpg" alt="Слайд 22" class="carousel-img">
+                        <div class="carousel-caption">Слайд 22 из 22 (нажмите для скачивания)</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Элементы управления каруселью -->
+        <div class="carousel-controls">
+            <button class="carousel-btn" onclick="showSlide(1)">Первый</button>
+            <button class="carousel-btn" onclick="showPrevSlide()">Назад</button>
+            <button class="carousel-btn" onclick="showNextSlide()">Вперед</button>
+            <button class="carousel-btn" onclick="showSlide(22)">Последний</button>
+        </div>
+        
+        <!-- Навигационные точки -->
+        <div class="carousel-nav">
+            <!-- Точки будут добавлены через JavaScript -->
+        </div>
+    </main>
+
+    <footer>
+        © 2025 Галиуллина Элина ИЦТМС 3-1
+    </footer>
+
+    <script>
+        // Минимальный JavaScript только для управления каруселью
+        let currentSlide = 1;
+        const totalSlides = 22;
+        
+      
+        
+        function showSlide(n) {
+            currentSlide = n;
+            const carousel = document.querySelector('.carousel');
+            const slideWidth = 100 / totalSlides;
+            const translateValue = -(slideWidth * (n - 1));
+            carousel.style.transform = `translateX(${translateValue}%)`;
+            updateSlideCounter();
+        }
+        
+        function showNextSlide() {
+            if (currentSlide < totalSlides) {
+                showSlide(currentSlide + 1);
+            } else {
+                showSlide(1);
+            }
+        }
+        
+        function showPrevSlide() {
+            if (currentSlide > 1) {
+                showSlide(currentSlide - 1);
+            } else {
+                showSlide(totalSlides);
+            }
+        }
+        
+        // Создаем точки навигации
+        function createNavDots() {
+            const navContainer = document.querySelector('.carousel-nav');
+            for (let i = 1; i <= totalSlides; i++) {
+                const dot = document.createElement('div');
+                dot.className = 'nav-dot';
+                dot.onclick = function() { showSlide(i); };
+                navContainer.appendChild(dot);
+            }
+        }
+        
+        // Инициализация при загрузке страницы
+        document.addEventListener('DOMContentLoaded', function() {
+            createNavDots();
+            showSlide(1);
+        });
+    </script>
+</body>
+</html>

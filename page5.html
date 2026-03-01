@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Windows 11</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f0f9ff, #e6f4ff);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .top-nav {
+            background-color: #0077b6;
+            padding: 20px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-link:hover {
+            background-color: #48cae4;
+            transform: translateY(-2px);
+        }
+
+        .content {
+            flex: 1;
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .hero-section {
+            text-align: center;
+            padding: 4rem 0;
+            background: rgba(255,255,255,0.9);
+            border-radius: 20px;
+            margin: 2rem 0;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+        }
+
+        .info-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+
+        .info-section h2 {
+            margin-bottom: 1rem;
+            color: #0077b6;
+        }
+
+        .info-section ul {
+            margin-left: 20px;
+            list-style: disc;
+        }
+
+        .os-icon {
+            width: 100px;
+            height: 100px;
+            margin: 1rem auto;
+            display: block;
+        }
+
+        footer {
+            background-color: #f0f0f0;
+            padding: 25px;
+            text-align: center;
+            border-top: 2px solid #0077b6;
+            color: #555;
+            margin-top: auto;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 15px;
+            }
+            
+            .nav-link {
+                padding: 10px 20px;
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="top-nav">
+        <div class="nav-links">
+            <a href="index.html" class="nav-link">Главная</a>
+            <a href="page5.html" class="nav-link">ОС</a>
+            <a href="page2.html" class="nav-link">Раздел 2</a>
+            <a href="page3.html" class="nav-link">Раздел 3</a>
+            <a href="page4.html" class="nav-link">Обо мне</a>
+        </div>
+    </nav>
+
+    <main class="content">
+        <div class="hero-section">
+            <img src="win11-logo.png" alt="Windows 11" class="os-icon">
+            <h1>Windows 11</h1>
+            <p>Современная операционная система с новым дизайном и улучшенной производительностью</p>
+        </div>
+
+        <div class="info-section">
+            <h2>📅 Дата выхода</h2>
+            <p>Windows 11 была официально выпущена 5 октября 2021 года. Это первая ОС нового поколения от Microsoft с переработанным интерфейсом.</p>
+        </div>
+
+        <div class="info-section">
+            <h2>🧠 Основные особенности</h2>
+            <ul>
+                <li><strong>Новый дизайн:</strong> Центрированное меню "Пуск" и закругленные углы</li>
+                <li><strong>Производительность:</strong> Оптимизация для новых процессоров и DirectStorage</li>
+                <li><strong>Безопасность:</strong> Обязательная поддержка TPM 2.0 и Secure Boot</li>
+                <li><strong>Виджеты:</strong> Персонализированная лента новостей и информации</li>
+                <li><strong>Мультизадачность:</strong> Улучшенные Snap Layouts и виртуальные рабочие столы</li>
+            </ul>
+        </div>
+
+        <div class="info-section">
+            <h2>🎮 Поддержка игр</h2>
+            <ul>
+                <li>Auto HDR - автоматическое улучшение цветового диапазона</li>
+                <li>DirectStorage для мгновенной загрузки игровых миров</li>
+                <li>Интеграция с Xbox Game Pass</li>
+                <li>Поддержка игр в облаке через Xbox Cloud Gaming</li>
+            </ul>
+        </div>
+
+        <div class="info-section">
+            <h2>💼 Для работы и учёбы</h2>
+            <ul>
+                <li>Встроенное приложение Microsoft Teams</li>
+                <li>Поддержка Android-приложений через Amazon Appstore</li>
+                <li>Улучшенная интеграция с Microsoft 365</li>
+                <li>Функции для гибридной работы и обучения</li>
+            </ul>
+        </div>
+
+        <div class="info-section">
+            <h2>📊 Системные требования</h2>
+            <ul>
+                <li>Процессор: 1 ГГц или выше с 2+ ядрами</li>
+                <li>ОЗУ: 4 ГБ и более</li>
+                <li>Память: 64 ГБ свободного места</li>
+                <li>TPM: версия 2.0</li>
+                <li>Графика: DirectX 12 с WDDM 2.0</li>
+            </ul>
+        </div>
+    </main>
+
+    <footer>
+        © 2025 Галиуллина Элина ИЦТМС 3-1
+    </footer>
+</body>
+</html>

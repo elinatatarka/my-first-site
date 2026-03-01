@@ -1,0 +1,530 @@
+<!DOCTYPE html> 
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Эксперименты VeraCrypt</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(to bottom, #e6f4ff, #ffffff);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .top-nav {
+            background-color: #0077b6;
+            padding: 20px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-link:hover {
+            background-color: #48cae4;
+            transform: translateY(-2px);
+        }
+
+        .content {
+            flex: 1;
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .experiment {
+            background: white;
+            padding: 30px;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .carousel {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin: 20px auto;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        .carousel img {
+            width: 100%;
+            display: none;
+        }
+
+        .carousel img.active {
+            display: block;
+        }
+
+        .carousel-controls {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 10px;
+        }
+
+        .carousel-controls button {
+            padding: 10px 20px;
+            background-color: #0077b6;
+            border: none;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        /* Новый стиль для надписи под каруселью */
+        .photo-label {
+            text-align: center;
+            margin-top: 8px;
+            font-weight: 600;
+            color: #0077b6;
+            font-size: 16px;
+            user-select: none;
+        }
+
+        footer {
+            background-color: #f0f0f0;
+            padding: 25px;
+            text-align: center;
+            border-top: 2px solid #0077b6;
+            color: #555;
+            margin-top: auto;
+        }
+    </style>
+</head>
+<body>
+    <nav class="top-nav">
+        <div class="nav-links">
+            <a href="index.html" class="nav-link">Главная</a>
+            <a href="page5.html" class="nav-link">ОС</a>
+            <a href="page2.html" class="nav-link">Раздел 2</a>
+            <a href="page3.html" class="nav-link">Раздел 3</a>
+            <a href="page4.html" class="nav-link">Обо мне</a>
+        </div>
+    </nav>
+
+    <main class="content">
+        <h1 style="color: #0077b6; margin-bottom: 30px;">🧪 Эксперименты с VeraCrypt</h1>
+
+        <!-- Эксперимент 1 -->
+        <div class="experiment">
+            <h2>Эксперимент 1: Создание зашифрованного тома</h2>
+            <p>📌 Пошаговая инструкция</p>
+            <p>Шаг 1. Запуск VeraCrypt<br>
+            Открой программу VeraCrypt от имени администратора (ПКМ → "Запуск от имени администратора").</p>
+
+            <p>Шаг 2. Нажать "Создать том..."<br>
+            В основном окне нажмите «Создать том...» — это запустит мастер создания зашифрованного тома.</p>
+
+            <p>Шаг 3. Выбрать тип тома<br>
+            Выберите первый вариант:<br>
+            🔘 Создать зашифрованный файл-контейнер<br>
+            Это значит, что шифрованный том будет представлять собой один файл на диске.<br>
+            Нажмите Далее.</p>
+
+            <p>Шаг 4. Тип тома — стандартный<br>
+            Оставьте выбор по умолчанию:<br>
+            🔘 Обычный том VeraCrypt<br>
+            (скрытые тома будем использовать в других экспериментах)<br>
+            Нажмите Далее.</p>
+
+            <p>Шаг 5. Указание расположения файла<br>
+            Нажмите кнопку "Выбрать файл..."<br>
+            Укажи расположение, например:<br>
+            C:\Users\Твое_Имя\Documents\experiment1.hc<br>
+            Введите имя файла: experiment1.hc<br>
+            (расширение .hc означает "hidden container" — просто принятое VeraCrypt имя, это не означает, что он скрытый).<br>
+            ⚠️ Важно: если выбрать уже существующий файл — он будет перезаписан! Поэтому указываем новое имя.<br>
+            Нажмите Сохранить, затем Далее.</p>
+
+            <p>Шаг 6. Выбор алгоритмов шифрования<br>
+            Оставьте по умолчанию:<br>
+            Алгоритм шифрования: AES<br>
+            Алгоритм хэширования: SHA-512<br>
+            Нажмите Далее.</p>
+
+            <p>Шаг 7. Размер тома<br>
+            Введите размер, например: 100 MB<br>
+            (это будет размер твоего "виртуального зашифрованного диска").<br>
+            Нажмите Далее.</p>
+
+            <p>Шаг 8. Установка пароля<br>
+            Придумай и введи надежный пароль (от 8 символов, можно с цифрами и спецзнаками).<br>
+            Запомни или запиши его в надёжном месте.<br>
+            Нажми Далее.<br>
+            ⚠️ Внимание: если забудешь пароль, никак нельзя будет восстановить доступ!</p>
+
+            <p>Шаг 9. Файловая система<br>
+            Оставь тип FAT или выбери NTFS, если планируешь хранить большие файлы.<br>
+            Двигай мышкой по окну 30 секунд (для генерации случайных данных).<br>
+            Нажми Форматировать — будет создан файл-контейнер.<br>
+            💾 Программа создаст файл experiment1.hc по указанному пути.<br>
+            Когда появится сообщение «Том успешно создан» — нажми OK → Выход.</p>
+
+            <p>💡 Шаг 10. Монтирование тома<br>
+            Теперь монтируем созданный том как виртуальный диск:<br>
+            В главном окне VeraCrypt выбери любую букву диска (например, X:).<br>
+            Нажми Выбрать файл... и укажи файл experiment1.hc.<br>
+            Нажми Смонтировать, введи пароль.<br>
+            Появится новый диск в проводнике — это и есть зашифрованный контейнер.</p>
+
+            <p>📝 Результат эксперимента<br>
+            Создан виртуальный диск (X:), защищённый паролем.<br>
+            Все файлы, которые ты туда скопируешь, будут автоматически зашифрованы на лету.<br>
+            Никто не сможет прочитать содержимое файла experiment1.hc без пароля и программы VeraCrypt.<br>
+            При отключении монтирования или выключении ПК, диск исчезает.</p>
+
+            <div class="carousel" id="carousel1">
+                <img src="ex1vera1.png" class="active">
+                <img src="ex1vera2.png">
+                <img src="ex1vera3.png">
+                <img src="ex1vera4.png">
+                <img src="ex1vera5.png">
+				<img src="ex1vera6.png">
+            </div>
+            <div class="photo-label" id="photoLabel1">Фото 1</div>
+            <div class="carousel-controls">
+                <button onclick="prev(1)">Назад</button>
+                <button onclick="next(1)">Вперёд</button>
+            </div>
+        </div>
+
+        <!-- Эксперимент 2 -->
+ <!-- Эксперимент 2 -->
+<div class="experiment">
+    <h2>Эксперимент 2: Скрытый том</h2>
+    <p>📌 Пошаговая инструкция</p>
+    <p>Шаг 1. Подключение флешки<br>
+    Подключи флешку к USB-порту.<br>
+    Убедись, что система её распознала (можно открыть проводник и посмотреть букву, например E:).</p>
+
+    <p>Шаг 2. Запуск VeraCrypt<br>
+    Открой VeraCrypt от имени администратора.</p>
+
+    <p>Шаг 3. Открытие мастера шифрования<br>
+    Нажми кнопку «Создать том...»<br>
+    Выбери второй вариант:<br>
+    🔘 Зашифровать несистемный раздел/диск<br>
+    Нажми Далее.</p>
+
+    <p>Шаг 4. Выбор шифруемого устройства<br>
+    Нажми Устройство...<br>
+    Найди в списке свою флешку (будет указана как Removable Disk, пример: \Device\Harddisk2\Partition1).<br>
+    Внимательно выбери только флешку, чтобы не потерять данные с других дисков.<br>
+    Нажми OK → Далее.</p>
+
+    <p>Шаг 5. Выбор типа тома<br>
+    Выбираем:<br>
+    🔘 Обычный том VeraCrypt<br>
+    (Скрытые — в других экспериментах)<br>
+    Нажми Далее.</p>
+
+    <p>Шаг 6. Выбор режима шифрования<br>
+    Оставь по умолчанию:<br>
+    Алгоритм шифрования: AES<br>
+    Алгоритм хэширования: SHA-512<br>
+    Нажми Далее.</p>
+
+    <p>Шаг 7. Полная или быстрая очистка<br>
+    Выбери:<br>
+    🔘 Полное форматирование<br>
+    (более безопасно, так как затирает старые данные)<br>
+    Нажми Далее.</p>
+
+    <p>Шаг 8. Пароль<br>
+    Введи надёжный пароль.<br>
+    Длина: минимум 10 символов.<br>
+    Запомни или сохрани — восстановить невозможно.<br>
+    Нажми Далее.</p>
+
+    <p>Шаг 9. Форматирование и шифрование<br>
+    Выбирай файловую систему: FAT, если нужна совместимость с разными ОС, или NTFS, если будешь использовать только в Windows.<br>
+    Двигай мышкой по окну, чтобы создать случайные данные (30–60 сек).<br>
+    Нажми Форматировать.<br>
+    ⏱️ Процесс может занять несколько минут (зависит от объёма флешки).<br>
+    Когда появится сообщение об успешном создании — нажми OK → Выход.</p>
+
+    <p>💡 Шаг 10. Монтирование зашифрованной флешки<br>
+    Теперь, чтобы использовать флешку:<br>
+    Открой VeraCrypt.<br>
+    Выбери букву, например Z:.<br>
+    Нажми Устройство... и выбери свою флешку.<br>
+    Нажми Смонтировать, введи пароль.<br>
+    Флешка появится в проводнике как обычный диск Z:, но всё, что ты туда скопируешь, будет на лету шифроваться.</p>
+
+    <p>📤 Как безопасно отключать флешку<br>
+    В VeraCrypt нажми Демонтировать.<br>
+    Только после этого отключай устройство.</p>
+
+    <div class="carousel" id="carousel2">
+        <img src="ex2vera1.png" class="active">
+        <img src="ex2vera2.png">
+        <img src="ex2vera3.png">
+        <img src="ex2vera4.png">
+        <img src="ex2vera5.png">
+        <img src="ex2vera6.png">
+    </div>
+    <div class="photo-label" id="photoLabel2">Фото 1</div>
+    <div class="carousel-controls">
+        <button onclick="prev(2)">Назад</button>
+        <button onclick="next(2)">Вперёд</button>
+    </div>
+</div>
+
+        <!-- Эксперимент 3 -->
+<!-- Эксперимент 3 -->
+<div class="experiment">
+    <h2>Эксперимент 3: Шифрование системного раздела</h2>
+    <p>📌 Пошаговая инструкция</p>
+    <p>Шаг 1. Запуск VeraCrypt от имени администратора<br>
+    Нажми правой кнопкой мыши на VeraCrypt → "Запуск от имени администратора".</p>
+
+    <p>Шаг 2. Запуск шифрования системного раздела<br>
+    В меню выбери «Системный том» → нажми «Шифровать системный раздел/диск». </p>
+
+    <p>Шаг 3. Выбор варианта шифрования<br>
+    Выбери «Обычное шифрование системного раздела».</p>
+
+    <p>Шаг 4. Выбор алгоритмов шифрования и хэширования<br>
+    Обычно можно оставить AES и SHA-512 по умолчанию.</p>
+
+    <p>Шаг 5. Установка пароля<br>
+    Придумай надежный пароль, минимум 8 символов. Запомни его — без него доступ к системе будет невозможен.</p>
+
+    <p>Шаг 6. Тест загрузчика<br>
+    Программа проверит совместимость загрузчика VeraCrypt с твоей системой.</p>
+
+    <p>Шаг 7. Начало шифрования<br>
+    Подтверди и начни шифрование. Это займет несколько часов, в зависимости от объема диска.</p>
+
+    <p>Шаг 8. Перезагрузка и вход в систему<br>
+    После шифрования компьютер перезагрузится. Для входа теперь нужно будет вводить пароль VeraCrypt.</p>
+
+    <div class="carousel" id="carousel3">
+        <img src="ex3vera1.png" class="active">
+        <img src="ex3vera2.png">
+        <img src="ex3vera3.png">
+        <img src="ex3vera4.png">
+    </div>
+    <div class="photo-label" id="photoLabel3">Фото 1</div>
+    <div class="carousel-controls">
+        <button onclick="prev(3)">Назад</button>
+        <button onclick="next(3)">Вперёд</button>
+    </div>
+</div>
+
+
+ <!-- Эксперимент 4 -->
+<div class="experiment">
+    <h2>Эксперимент 4: Защита с помощью ключевого файла</h2>
+    <p>📌 Цель</p>
+    <p>Создать зашифрованный том, доступ к которому возможен только при вводе пароля <strong>и</strong> наличии специального ключевого файла.</p>
+
+    <p>📌 Пошаговая инструкция</p>
+
+    <p>Шаг 1. Запуск VeraCrypt<br>
+    Запусти VeraCrypt от имени администратора (ПКМ на ярлыке → «Запуск от имени администратора»).</p>
+
+    <p>Шаг 2. Создание нового тома<br>
+    Нажми «Создать том» (Create Volume).</p>
+
+    <p>Шаг 3. Тип тома<br>
+    Выбери:<br>
+    🔘 «Создать зашифрованный файл-контейнер» (Create an encrypted file container)<br>
+    Нажми Далее.</p>
+
+    <p>Шаг 4. Тип шифрования<br>
+    Выбери:<br>
+    🔘 «Обычный том VeraCrypt» (Standard VeraCrypt volume)<br>
+    Нажми Далее.</p>
+
+    <p>Шаг 5. Указание файла<br>
+    Нажми «Выбрать файл...» (Select File...)<br>
+    Укажи путь и имя (например: <code>keyfile_volume.hc</code>)<br>
+    Нажми Сохранить → Далее.</p>
+
+    <p>Шаг 6. Алгоритмы<br>
+    Выбери:<br>
+    🔒 Шифрование: AES<br>
+    🔑 Хэширование: SHA-512<br>
+    Нажми Далее.</p>
+
+    <p>Шаг 7. Размер тома<br>
+    Введи, например: 150 МБ<br>
+    Нажми Далее.</p>
+
+    <p>Шаг 8. Установка пароля<br>
+    Придумай пароль, затем поставь галочку:<br>
+    ☑️ «Использовать ключевые файлы» (Use keyfiles)<br>
+    Нажми «Ключевые файлы...» (Keyfiles...).</p>
+
+    <p>Шаг 9. Создание ключевого файла<br>
+    В открывшемся окне нажми:<br>
+    «Создать случайный ключевой файл...» (Generate Random Keyfile...)<br>
+    Сохрани файл (например, на флешку).<br>
+    Убедись, что он добавлен в список → нажми OK → Далее.</p>
+
+    <p>Шаг 10. Форматирование<br>
+    Двигай мышкой в течение 30–60 сек (для генерации случайности), затем нажми Форматировать.<br>
+    Дождись завершения процесса → нажми OK → Выход.</p>
+
+    <p>🔐 Теперь для монтирования тома нужно:<br>
+    1. Выбрать файл-том.<br>
+    2. Указать пароль.<br>
+    3. Добавить тот же ключевой файл (в том же порядке и количестве).<br>
+    Без него монтирование будет невозможно.</p>
+
+    <div class="carousel" id="carousel4">
+        <img src="ex3vera1.png" class="active">
+        <img src="ex4vera2.png">
+        <img src="ex4vera3.png">
+        <img src="ex4vera4.png">
+    </div>
+    <div class="photo-label" id="photoLabel4">Фото 1</div>
+    <div class="carousel-controls">
+        <button onclick="prev(4)">Назад</button>
+        <button onclick="next(4)">Вперёд</button>
+    </div>
+</div>
+
+        <!-- Эксперимент 5 -->
+<!-- Эксперимент 5 -->
+<div class="experiment">
+    <h2>Эксперимент 5: Скрытый том VeraCrypt</h2>
+    <p>📌 Цель</p>
+    <p>Создать скрытый зашифрованный том внутри обычного, чтобы при принуждении можно было открыть внешний (видимый) том, не выдав наличие скрытого.</p>
+
+    <p>📌 Пошаговая инструкция</p>
+
+    <p>Шаг 1. Запуск VeraCrypt<br>
+    Запусти VeraCrypt от имени администратора.</p>
+
+    <p>Шаг 2. Создание тома<br>
+    Нажми «Создать том» (Create Volume).</p>
+
+    <p>Шаг 3. Тип тома<br>
+    Выбери:<br>
+    🔘 «Создать скрытый том VeraCrypt» (Create a hidden VeraCrypt volume)<br>
+    Нажми Далее.</p>
+
+    <p>Шаг 4. Режим скрытого тома<br>
+    Выбери:<br>
+    🔘 «Создать новый внешний и скрытый том» (Normal mode)<br>
+    Нажми Далее.</p>
+
+    <p>Шаг 5. Указание файла<br>
+    Нажми «Выбрать файл...»<br>
+    Укажи имя и путь (например: <code>hiddenvolume.hc</code>) → Сохранить → Далее.</p>
+
+    <p>Шаг 6. Алгоритмы для внешнего тома<br>
+    Шифрование: AES<br>
+    Хэш: SHA-512<br>
+    Нажми Далее.</p>
+
+    <p>Шаг 7. Размер внешнего тома<br>
+    Пример: 200 МБ<br>
+    Нажми Далее.</p>
+
+    <p>Шаг 8. Пароль внешнего тома<br>
+    Придумай пароль → Далее.</p>
+
+    <p>Шаг 9. Файловая система<br>
+    Выбери файловую систему (например, FAT) → двигай мышкой → Форматировать → OK.</p>
+
+    <p>Шаг 10. Создание скрытого тома<br>
+    Укажи размер (меньше, чем внешний, например, 100 МБ) → Далее.</p>
+
+    <p>Шаг 11. Алгоритмы скрытого тома<br>
+    Шифрование: AES<br>
+    Хэш: SHA-512<br>
+    Нажми Далее.</p>
+
+    <p>Шаг 12. Пароль скрытого тома<br>
+    Придумай другой пароль (не такой, как у внешнего!) → Далее.</p>
+
+    <p>Шаг 13. Форматирование скрытого тома<br>
+    Выбери файловую систему → двигай мышкой → Форматировать → OK → Выход.</p>
+
+    <p>🔐 При монтировании:<br>
+    — Если ввести пароль от внешнего тома — откроется внешний.<br>
+    — Если ввести пароль от скрытого — откроется скрытый.<br>
+    Таким образом, можно «правдоподобно отрицать» наличие второго тома.</p>
+
+    <div class="carousel" id="carousel5">
+        <img src="ex1vera1.png" class="active">
+        <img src="ex5vera2.png">
+        <img src="ex5vera3.png">
+        <img src="ex5vera4.png">
+    </div>
+    <div class="photo-label" id="photoLabel5">Фото 1</div>
+    <div class="carousel-controls">
+        <button onclick="prev(5)">Назад</button>
+        <button onclick="next(5)">Вперёд</button>
+    </div>
+</div>
+
+    </main>
+
+    <footer>
+        © 2025 Галиуллина Элина ИЦТМС 3-1
+    </footer>
+
+    <script>
+        const carousels = [1, 2, 3, 4, 5].reduce((acc, i) => {
+            acc[i] = document.querySelectorAll(`#carousel${i} img`);
+            return acc;
+        }, {});
+
+        const currentIndex = {1: 0, 2: 0, 3: 0, 4: 0, 5: 0};
+
+        function updatePhotoLabel(num) {
+            const label = document.getElementById(`photoLabel${num}`);
+            if (!label) return;
+            label.textContent = `Фото ${currentIndex[num] + 1}`;
+        }
+
+        function showSlide(num, index) {
+            carousels[num].forEach((img, i) => {
+                img.classList.toggle('active', i === index);
+            });
+            updatePhotoLabel(num);
+        }
+
+        function next(num) {
+            currentIndex[num] = (currentIndex[num] + 1) % carousels[num].length;
+            showSlide(num, currentIndex[num]);
+        }
+
+        function prev(num) {
+            currentIndex[num] = (currentIndex[num] - 1 + carousels[num].length) % carousels[num].length;
+            showSlide(num, currentIndex[num]);
+        }
+
+        // Инициализация надписей при загрузке страницы
+        [1, 2, 3, 4, 5].forEach(num => updatePhotoLabel(num));
+    </script>
+</body>
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Средства защиты информации от несанкционированного доступа.</title>
+    <style>
+        /* Добавляем новые стили для кликабельных карточек */
+        .image-card a {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            height: 100%;
+        }
+        
+        .image-card:hover {
+            cursor: pointer;
+            transform: translateY(-7px);
+        }
+    </style>
+    <!-- Остальные стили без изменений -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(to bottom, #e6f4ff, #ffffff);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .top-nav {
+            background-color: #0077b6;
+            padding: 20px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-link:hover {
+            background-color: #48cae4;
+            transform: translateY(-2px);
+        }
+
+        .content {
+            flex: 1;
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .text-block {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin: 30px 0;
+            line-height: 1.6;
+        }
+
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin: 40px 0;
+        }
+
+        .image-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .image-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .image-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .image-caption {
+            padding: 15px;
+            text-align: center;
+            color: #555;
+        }
+
+        footer {
+            background-color: #f0f0f0;
+            padding: 25px;
+            text-align: center;
+            border-top: 2px solid #0077b6;
+            color: #555;
+            margin-top: auto;
+        }
+
+        @media (max-width: 768px) {
+            .gallery-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-links {
+                gap: 15px;
+            }
+            
+            .nav-link {
+                padding: 10px 20px;
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Навигационная панель -->
+    <nav class="top-nav">
+        <div class="nav-links">
+             <a href="index.html" class="nav-link">Главная</a>
+            <a href="page5.html" class="nav-link">ОС</a>
+        
+            <a href="page2.html" class="nav-link">Раздел 2</a>
+            <a href="page3.html" class="nav-link">Раздел 3</a>
+            <a href="page4.html" class="nav-link">Обо мне</a>
+
+
+
+        </div>
+    </nav>
+
+    <!-- Основной контент -->
+    <main class="content">
+        <div class="text-block">
+            <h2>Средства защиты информации от несанкционированного доступа.</h2>
+            <p>Средства защиты информации от несанкционированного доступа включают многоуровневые системы аутентификации, такие как биометрия, двухфакторная проверка и электронные ключи. Для предотвращения утечек данных применяются шифрование информации, межсетевые экраны (firewall), антивирусные программы, а также системы контроля доступа на основе ролевых моделей (RBAC). Регулярное обновление ПО и обучение сотрудников основам кибербезопасности дополняют комплексный подход к защите цифровых активов.</p>
+            <p>Перечень ПО:</p>
+        </div>
+
+        <!-- Галерея изображений с измененной первой карточкой "https://www.veracrypt.fr/en/Downloads.html"-->
+        <div class="gallery-container">
+            			<!-- В разделе галереи измените первую карточку на: -->
+			<div class="image-card">
+				<a href="veracrypt.html">  <!-- Измененная ссылка -->
+					<img src="image1.jpg" alt="VeraCrypt">
+					<div class="image-caption">VeraCrypt (подробнее)</div>
+				</a>
+			</div>
+             <div class="image-card">
+               <a href="ZoneAlarm.html">  <!-- Измененная ссылка -->
+					<img src="image2.jpg" alt="ZoneAlarm">
+					<div class="image-caption">ZoneAlarm (подробнее)</div>
+				</a>
+            </div>
+
+            <div class="image-card">
+				<a href="Rohos.html">  <!-- Измененная ссылка -->
+					<img src="image3.jpg" alt="Rohos">
+					<div class="image-caption">Rohos (подробнее)</div>
+				</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Футер -->
+    <footer>
+        © 2025 Галиуллина Элина ИЦТМС 3-1
+    </footer>
+</body>
+</html>
